@@ -16,7 +16,7 @@ publish {
     userOrg = 'skyfe79'
     groupId = 'kr.pe.burt.android.lib'
     artifactId = 'androidkommon'
-    publishVersion = '0.0.2'
+    publishVersion = '0.0.3'
     desc = 'AndroidKommon is a collection of Android utility extentions in Kotlin'
     website = 'https://github.com/skyfe79/AndroidKommon'
     issueTracker = "${website}/issues"
@@ -30,8 +30,8 @@ android {
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion 23
-        versionCode 2
-        versionName "0.0.2"
+        versionCode 3
+        versionName "0.0.3"
     }
     buildTypes {
         release {
