@@ -1,4 +1,4 @@
-package kr.co.desirelab.android.ranunculus.delegates
+package kr.pe.burt.android.lib.androidkommon.delegatexts
 
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
