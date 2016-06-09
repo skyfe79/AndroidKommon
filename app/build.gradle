@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "kr.pe.burt.android.lib.androidkommon.app"
-        minSdkVersion 7
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

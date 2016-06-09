@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="androidoperationqueue-0.0.2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/androidkommon/build/intermediates/exploded-aar/kr.pe.burt.android.lib/androidoperationqueue/0.0.2/res" />
+      <root url="jar://$PROJECT_DIR$/androidkommon/build/intermediates/exploded-aar/kr.pe.burt.android.lib/androidoperationqueue/0.0.2/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/kr.pe.burt.android.lib/androidoperationqueue/0.0.2/5d6425c3f89d8ba9407b534656216e6be8dd5dbe/androidoperationqueue-0.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
