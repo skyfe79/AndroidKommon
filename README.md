@@ -2,6 +2,22 @@
 
 Collection of Android utility extentions in Kotlin
 
+## Setup Gradle
+
+```groovy
+repositories {
+
+	maven { url 'https://dl.bintray.com/skyfe79/maven/' }
+	
+}
+
+dependencies {
+
+
+}
+```
+
+
 ## RxComponents
 
  * RxAndroidActivity
