@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="fragmentnavigationcontroller-0.0.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/androidkommon/build/intermediates/exploded-aar/kr.pe.burt.android.lib/fragmentnavigationcontroller/0.0.4/res" />
+      <root url="jar://$PROJECT_DIR$/androidkommon/build/intermediates/exploded-aar/kr.pe.burt.android.lib/fragmentnavigationcontroller/0.0.4/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/kr.pe.burt.android.lib/fragmentnavigationcontroller/0.0.4/830aab4d93a282689e5076d00260b57185c0604a/fragmentnavigationcontroller-0.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
