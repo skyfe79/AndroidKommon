@@ -50,9 +50,8 @@ if(AndroidVersion.current() >= AndroidVersion.lollipop()) {
 ## Dependency moduls
 
 ```
-compile 'kr.pe.burt.android.lib:fragmentnavigationcontroller:0.0.1'
-compile 'kr.pe.burt.android.lib:androidactivity:0.0.3'
-compile 'kr.pe.burt.android.lib:androidchannel:0.0.4'
-compile 'kr.pe.burt.android.lib:androidoperationqueue:0.0.2'
+compile 'com.github.medyo:dynamicbox:1.2@aar'
+compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 compile 'com.trello:rxlifecycle:0.6.1'
+compile 'com.trello:rxlifecycle-components:0.6.1'
 ```
