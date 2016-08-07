@@ -2,6 +2,8 @@ package statecomponents;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import components.AndroidActivity;
 import kr.pe.burt.android.lib.androidkommon.R;
@@ -19,6 +21,12 @@ public abstract class AndroidStateActivity extends AndroidActivity {
         super.onCreate(savedInstanceState);
         onBeforeMakeRootView();
         setContentView(getLayoutResourceId());
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         setupStateViewGroup();
     }
 
@@ -33,18 +41,17 @@ public abstract class AndroidStateActivity extends AndroidActivity {
      * Return id of the state viewgroup which can be changed content dynamicallyreturn
      * if return -1, root view group will be the state view group
      */
-    protected int getStateViewGroupId() {
-        return -1;
+    protected View getStateViewGroup() {
+        return null;
     }
 
     private void setupStateViewGroup() {
 
-        int stateViewGroupId = getStateViewGroupId();
-
-        if(stateViewGroupId == -1) {
+        View sv = getStateViewGroup();
+        if(getStateViewGroup() == null) {
             stateViewGroup = new DynamicBox(this, getLayoutResourceId());
         } else {
-            stateViewGroup = new DynamicBox(this, stateViewGroupId);
+            stateViewGroup = new DynamicBox(this, sv);
         }
 
         setupLoadingView();
@@ -94,7 +101,7 @@ public abstract class AndroidStateActivity extends AndroidActivity {
     protected void showEmptyView() {
         if(stateViewGroup == null)
             return;
-        stateViewGroup.showCustomView("state_internet_connection_error_view");
+        stateViewGroup.showCustomView("state_empty_view");
     }
 
     protected void showContentView() {

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import components.support.AndroidFragment;
+import components.AndroidFragment;
 import kr.pe.burt.android.lib.androidkommon.R;
 import mehdi.sakout.dynamicbox.DynamicBox;
 
@@ -21,11 +21,14 @@ public abstract class AndroidStateFragment extends AndroidFragment {
 
     @Override
     protected View onCreateContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(getLayoutResourceId(), container, false);
-        setupStateViewGroup();
-        return v;
+        return inflater.inflate(getLayoutResourceId(), container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setupStateViewGroup();
+    }
 
     /**
      * Return activity's layout file id
@@ -36,18 +39,17 @@ public abstract class AndroidStateFragment extends AndroidFragment {
      * Return id of the state viewgroup which can be changed content dynamicallyreturn
      * if return -1, root view group will be the state view group
      */
-    protected int getStateViewGroupId() {
-        return -1;
+    protected View getStateViewGroup() {
+        return null;
     }
 
     private void setupStateViewGroup() {
 
-        int stateViewGroupId = getStateViewGroupId();
-
-        if(stateViewGroupId == -1) {
+        View sv = getStateViewGroup();
+        if(sv == null) {
             stateViewGroup = new DynamicBox(getActivity(), getLayoutResourceId());
         } else {
-            stateViewGroup = new DynamicBox(getActivity(), stateViewGroupId);
+            stateViewGroup = new DynamicBox(getActivity(), sv);
         }
 
         setupLoadingView();
@@ -97,7 +99,7 @@ public abstract class AndroidStateFragment extends AndroidFragment {
     protected void showEmptyView() {
         if(stateViewGroup == null)
             return;
-        stateViewGroup.showCustomView("state_internet_connection_error_view");
+        stateViewGroup.showCustomView("state_empty_view");
     }
 
     protected void showContentView() {

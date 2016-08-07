@@ -1,58 +1,94 @@
-package statecomponents.support;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+package statecomponents;
+
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
-import components.support.AndroidFragment;
 import kr.pe.burt.android.lib.androidkommon.R;
 import mehdi.sakout.dynamicbox.DynamicBox;
 
 /**
  * Created by burt on 2016. 8. 7..
  */
-public abstract class AndroidStateFragment extends AndroidFragment {
+public abstract class AndroidStateViewController extends FrameLayout {
 
     protected DynamicBox stateViewGroup = null;
 
-    @Override
-    protected View onCreateContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutResourceId(), container, false);
+    public AndroidStateViewController(Context context) {
+        super(context);
+        loadView(context);
+    }
+
+    public AndroidStateViewController(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        loadView(context);
+    }
+
+    public AndroidStateViewController(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        loadView(context);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public AndroidStateViewController(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        loadView(context);
+    }
+
+    protected void loadView(Context context) {
+        LayoutInflater inflater = getLayoutInflater();
+        inflater.inflate(getLayoutResourceId(), this);
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
         setupStateViewGroup();
+        viewDidAppear();
     }
 
-
-    /**
-     * Return activity's layout file id
-     */
-    protected abstract int getLayoutResourceId();
-
-    /**
-     * Return id of the state viewgroup which can be changed content dynamicallyreturn
-     * if return -1, root view group will be the state view group
-     */
-    protected View getStateViewGroup() {
-        return null;
+    @Override
+    protected void onDetachedFromWindow() {
+        viewDidDisappear();
+        super.onDetachedFromWindow();
     }
+
 
     private void setupStateViewGroup() {
 
         View sv = getStateViewGroup();
         if(sv == null) {
-            stateViewGroup = new DynamicBox(getActivity(), getLayoutResourceId());
+            stateViewGroup = new DynamicBox(getContext(), getLayoutResourceId());
         } else {
-            stateViewGroup = new DynamicBox(getActivity(), sv);
+            stateViewGroup = new DynamicBox(getContext(), sv);
         }
 
         setupLoadingView();
         setupInternetConnectionErrorView();
         setupEmptyView();
+    }
+
+
+    protected void viewDidAppear() {
+        Log.d("TAG", "viewDidAppear");
+    }
+
+    protected void viewDidDisappear() {
+        Log.d("TAG", "viewDidDisappear");
+    }
+
+    protected abstract int getLayoutResourceId();
+
+    protected abstract View getStateViewGroup();
+
+    protected LayoutInflater getLayoutInflater() {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        return inflater;
     }
 
     private void setupLoadingView() {
@@ -105,5 +141,4 @@ public abstract class AndroidStateFragment extends AndroidFragment {
             return;
         stateViewGroup.hideAll();
     }
-
 }
