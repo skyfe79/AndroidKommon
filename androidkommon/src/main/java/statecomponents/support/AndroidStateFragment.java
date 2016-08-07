@@ -16,14 +16,12 @@ public abstract class AndroidStateFragment extends AndroidFragment {
 
     protected DynamicBox stateViewGroup = null;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected View onCreateContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(getLayoutResourceId(), container, false);
         setupStateViewGroup();
         return v;
     }
-
 
 
     /**
