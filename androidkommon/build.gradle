@@ -16,7 +16,7 @@ publish {
     userOrg = 'skyfe79'
     groupId = 'kr.pe.burt.android.lib'
     artifactId = 'androidkommon'
-    publishVersion = '0.0.9'
+    publishVersion = '0.0.10'
     desc = 'AndroidKommon is a collection of Android utility extentions in Kotlin'
     website = 'https://github.com/skyfe79/AndroidKommon'
     issueTracker = "${website}/issues"
