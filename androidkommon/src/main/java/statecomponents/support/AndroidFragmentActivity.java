@@ -18,6 +18,7 @@ public abstract class AndroidFragmentActivity extends RxFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onBeforeMakeRootView();
         setContentView(getLayoutResourceId());
         setupStateViewGroup();
     }
@@ -26,6 +27,8 @@ public abstract class AndroidFragmentActivity extends RxFragmentActivity {
      * Return activity's layout file id
      */
     protected abstract int getLayoutResourceId();
+
+    protected void onBeforeMakeRootView() {}
 
     /**
      * Return id of the state viewgroup which can be changed content dynamicallyreturn
